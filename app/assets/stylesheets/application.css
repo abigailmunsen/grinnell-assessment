@@ -19,85 +19,35 @@ https://www.colourlovers.com/palette/4696656/Equimoove
 */
 
 body {
-    background-color: #605063;
-    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+    font-family: futura-pt, sans-serif;
     font-size: 16px;
 }
 
 .main {
-    background-color: #ffdfb8;
     padding: 2% 5%;
     border-radius: 25px;
-    border-top: 4px solid #EF9F3E;
-    border-bottom: 4px solid #EF9F3E;
     text-align: center
 }
 
 .navbar-inverse {
-    background-color: #245b75;
+    background-color: #E1E7F2;
     border: 0px;
-    border-bottom: 4px solid #EF9F3E;
+    border-bottom: 4px solid #DA291C;
 }
 
 .nav.navbar-nav li a {
-    color: #EF9F3E;
+    color: #DA291C;
 }
 
 .navbar-inverse .navbar-brand {
-    font-family: 'Girassol', cursive;
-    color: #EF9F3E;
+    font-family: freight-text-pro, serif;
+    color: #DA291C;
     font-size: 26px;
+    font-weight: bold;
 }
 
 h1 {
-    font-family: 'Girassol', cursive;
+    font-family: freight-text-pro, serif;
     text-align: center;
-}
-
-#philpresent {
-    padding: 2% 5%;
-
-}
-
-#name {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-#years {
-    font-style: italic;
-}
-
-#suggestform {
-  text-align: left;
-  padding: 1% 4%;
-}
-
-#votes {
-  padding: 1% 4%;
-  text-align: left;
-  border-left: 1px solid #EF9F3E;
-}
-
-
-.vote {
-  text-align: center;
-  padding: 1% 4%;
-  background-color: #FFFFFF;
-  border-radius: 5px;
-  border-top: 4px solid #EF9F3E;
-  border-bottom: 4px solid #EF9F3E;
-}
-
-#suggname {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#suggyears {
-    font-style: italic;
-}
-
-#dispvotes {
-  font-size: 11px;
 }

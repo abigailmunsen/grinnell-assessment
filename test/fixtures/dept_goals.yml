@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goalNum: 1
+  goalText: MyString
+  goalDetails: MyText
+  InstGoal: one
+  Department: one
+
+two:
+  goalNum: 1
+  goalText: MyString
+  goalDetails: MyText
+  InstGoal: two
+  Department: two

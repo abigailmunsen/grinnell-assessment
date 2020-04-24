@@ -1,0 +1,2 @@
+class InstGoal < ApplicationRecord
+end

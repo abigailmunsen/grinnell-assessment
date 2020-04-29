@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  courseCode: 1
+  courseSection: 1
+  semester: MyString
+  courseTitle: MyString
+  courseDetails: MyText
+  department: one
+
+two:
+  courseCode: 1
+  courseSection: 1
+  semester: MyString
+  courseTitle: MyString
+  courseDetails: MyText
+  department: two

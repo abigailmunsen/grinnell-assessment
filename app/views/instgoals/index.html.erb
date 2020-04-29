@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instgoals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Goalnum</th>
+      <th>Goaltext</th>
+      <th>Goaldetails</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instgoals.each do |instgoal| %>
+      <tr>
+        <td><%= instgoal.goalNum %></td>
+        <td><%= instgoal.goalText %></td>
+        <td><%= instgoal.goalDetails %></td>
+        <td><%= instgoal.text %></td>
+        <td><%= link_to 'Show', instgoal %></td>
+        <td><%= link_to 'Edit', edit_instgoal_path(instgoal) %></td>
+        <td><%= link_to 'Destroy', instgoal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instgoal', new_instgoal_path %>

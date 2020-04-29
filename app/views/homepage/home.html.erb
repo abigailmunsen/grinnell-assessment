@@ -5,5 +5,9 @@
   </head>
   <body>
     <h1>Home</h1>
+    <% @goals.each do |t| %>
+      <%= t.goalNum %>. <%= t.goalText %><br/>
+      <%= link_to "Learn more!", inst_goal_path(t.id) %><br/>
+    <% end %>
   </body>
 </html>

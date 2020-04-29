@@ -1,6 +1,5 @@
 class HomepageController < ApplicationController
   def home
-    @goals = InstGoal.all
   end
 
   def about

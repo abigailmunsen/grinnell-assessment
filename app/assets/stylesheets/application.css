@@ -50,4 +50,15 @@ body {
 h1 {
     font-family: freight-text-pro, serif;
     text-align: center;
+    font-size: 2em;
+}
+
+h2 {
+  font-family: futura-pt, sans-serif;
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+table {
+  width: 100%;
 }

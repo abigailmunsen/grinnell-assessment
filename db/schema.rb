@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_163852) do
     t.integer "goalNum"
     t.text "goalText"
     t.string "goalDetails"
-    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

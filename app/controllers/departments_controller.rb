@@ -10,6 +10,8 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
+    @deptgoals = Deptgoal.where(department: @department).order(:deptgoal)
+    @courses = Course.where(department: @department)
   end
 
   # GET /departments/new
@@ -64,7 +66,10 @@ class DepartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
-      @department = Department.find(params[:id])
+      #this is not really ideal.
+      #ideally it would be something like @department = Department.find(params[:deptCode]) but that doesn't work.
+      #if a future group is seeing this feel free to email me at munsenab[@]grinnell.edu for an explanation.
+      @department = Department.find_by(deptCode: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

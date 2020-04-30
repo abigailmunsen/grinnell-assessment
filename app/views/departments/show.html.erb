@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "#{@department.deptSubject}") %>
 
-<p>
-  <strong>Deptsubject:</strong>
-  <%= @department.deptSubject %>
-</p>
+<h1><%= @department.deptFullName %></h1>
 
-<p>
-  <strong>Deptfullname:</strong>
-  <%= @department.deptFullName %>
-</p>
+<h2>Department Goals</h2>
+<table>
+    <% @deptgoals.each do |goal| %>
+      <tr>
+        <td><%= goal.goalNum %></td>
+        <td><%= goal.goalText %></td>
+        <td><%= link_to 'Show', [goal.department, goal] %></td>
+      </tr>
+    <% end %>
+</table>
 
-<p>
-  <strong>Deptcode:</strong>
-  <%= @department.deptCode %>
-</p>
+<h2>Department Courses</h2>
+<table>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= "#{@department.deptCode}#{course.courseCode}-#{course.courseSection}" %></td>
+        <td><%= course.courseTitle %></td>
+        <td><%= link_to 'Show', [course.department, course] %></td>
+      </tr>
+    <% end %>
+</table>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
 <%= link_to 'Back', departments_path %>

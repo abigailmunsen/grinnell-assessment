@@ -4,7 +4,6 @@ class CreateInstgoals < ActiveRecord::Migration[5.2]
       t.integer :goalNum
       t.text :goalText
       t.string :goalDetails
-      t.string :text
 
       t.timestamps
     end

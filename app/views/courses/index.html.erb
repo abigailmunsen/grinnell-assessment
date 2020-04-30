@@ -1,0 +1,22 @@
+<% provide(:title, "Courses") %>
+<h1><%="#{@department.deptSubject} Courses"%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Courses</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.courseTitle %></td>
+        <td><%= link_to 'Show', [course.department, course] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

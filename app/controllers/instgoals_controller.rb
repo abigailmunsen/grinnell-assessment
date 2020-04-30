@@ -10,6 +10,7 @@ class InstgoalsController < ApplicationController
   # GET /instgoals/1
   # GET /instgoals/1.json
   def show
+    @deptgoals = Deptgoal.where(instgoal: @instgoal)
   end
 
   # GET /instgoals/new

@@ -1,0 +1,19 @@
+<% provide(:title, "#{@course.courseCode}") %>
+
+<h1><%= @course.courseTitle %></h1>
+<h2><%= "#{@department.deptCode}-#{@course.courseCode}-#{@course.courseSection}" %></h2>
+
+<p>
+  <strong>Course Details:</strong>
+  <%= @course.courseDetails %>
+</p>
+
+<h2>Course Goals</h2>
+<table>
+    <% @coursegoals.each do |goal| %>
+      <tr>
+        <td><%= goal.goalNum %></td>
+        <td><%= goal.goalText %></td>
+      </tr>
+    <% end %>
+</table>

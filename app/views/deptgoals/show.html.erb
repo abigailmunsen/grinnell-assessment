@@ -1,0 +1,17 @@
+<% provide(:title, "#{@department.deptFullName} Goal #{@deptgoal.goalNum}") %>
+
+<h1><%= "#{@department.deptFullName} Goal #{@deptgoal.goalNum}" %></h1>
+<h2><%= @deptgoal.goalText %> </h2>
+<p><%= @deptgoal.goalDetails %> </p>
+
+<h2>Courses with goals corresponding to this one</h2>
+<table>
+    <% @coursegoals.each do |goal| %>
+      <tr>
+        <td><%= "#{@department.deptCode}#{goal.course.courseCode}-#{goal.course.courseSection}" %></td>
+        <td><%= goal.course.semester%></td>
+        <td><%= goal.goalText %></td>
+        <td><%= link_to 'Show', [goal.course.department, goal.course] %></td>
+      </tr>
+    <% end %>
+</table>

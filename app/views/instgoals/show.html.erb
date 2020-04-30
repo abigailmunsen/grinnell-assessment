@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Institutional Goal #{@instgoal.goalNum}") %>
+
+<h1>Institutional Goal <%= @instgoal.goalNum %></h1>
+
+<h2><%= @instgoal.goalText %></h2>
 
 <p>
-  <strong>Goalnum:</strong>
-  <%= @instgoal.goalNum %>
-</p>
-
-<p>
-  <strong>Goaltext:</strong>
-  <%= @instgoal.goalText %>
-</p>
-
-<p>
-  <strong>Goaldetails:</strong>
+  <strong>Goal Details:</strong>
   <%= @instgoal.goalDetails %>
 </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @instgoal.text %>
-</p>
+<h2>Departments with goals corresponding to this one</h2>
+<table>
+    <% @deptgoals.each do |goal| %>
+      <tr>
+        <td><%= goal.department.deptSubject %></td>
+        <td><%= goal.goalText %></td>
+        <td><%= link_to 'Show', goal.department %></td>
+      </tr>
+    <% end %>
+</table>
 
 <%= link_to 'Edit', edit_instgoal_path(@instgoal) %> |
 <%= link_to 'Back', instgoals_path %>

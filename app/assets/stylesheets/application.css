@@ -27,7 +27,7 @@ body {
 .main {
     padding: 2% 5%;
     border-radius: 25px;
-    text-align: center
+    text-align: left;
 }
 
 .navbar-inverse {

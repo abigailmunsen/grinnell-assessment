@@ -21,4 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Future Feature Visualization and Dummy Dataset in the playground folder

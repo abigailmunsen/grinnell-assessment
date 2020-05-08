@@ -10,7 +10,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
-    @deptgoals = Deptgoal.where(department: @department).order(:deptgoal)
+    @deptgoals = Deptgoal.where(department: @department).order(:goalNum)
     @courses = Course.where(department: @department)
   end
 

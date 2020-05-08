@@ -2,12 +2,12 @@
 
 one:
   goalNum: 1
-  goalText: MyText
+  goalText: Goal 1
   goalDetails: MyString
   text: MyString
 
 two:
-  goalNum: 1
-  goalText: MyText
+  goalNum: 2
+  goalText: Goal 2
   goalDetails: MyString
   text: MyString

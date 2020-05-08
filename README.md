@@ -15,5 +15,9 @@ Clone the repo to your machine, then run `bundle install`. Run `rake db:setup` t
 
 
 ## Deployment
-
 The app is currently deployed on [Heroku](https://grinnellassessment.herokuapp.com/). If you are a member of a future CSC324 development team, contact your professor for information on how to deploy.
+
+
+
+
+* Future Feature Visualization and Dummy Dataset in the playground folder

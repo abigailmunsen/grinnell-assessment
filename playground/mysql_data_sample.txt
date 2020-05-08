@@ -1,0 +1,198 @@
+#mysql-ctl cli
+
+DROP DATABASE IF EXISTS ga;
+CREATE DATABASE ga;
+USE ga;
+DROP TABLE IF EXISTS departmental_goals_satisfied_per_course_goal;
+DROP TABLE IF EXISTS institutional_goals_satisfied_per_department_goal;
+DROP TABLE IF EXISTS course_goals;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS department_goals;
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS institution_goals;
+
+
+CREATE TABLE institution_goals
+	(
+		id INT AUTO_INCREMENT PRIMARY KEY,
+  		abstract VARCHAR(100) NOT NULL,
+		details VARCHAR(255) NOT NULL
+	);
+    
+INSERT INTO institution_goals(abstract, details)
+VALUES
+('first institution goal', 'some details about the first institution goal'),
+('second institution goal', 'some details about the first institution goal'),
+('third institution goal', 'some details about the first institution goal'),
+('fourth institution goal', 'some details about the first institution goal');
+
+##################################################
+
+CREATE TABLE department
+    (
+        department_code CHAR(3) PRIMARY KEY,    
+        department_name VARCHAR(50) NOT NULL
+    );
+   
+INSERT INTO department(department_code, department_name)
+VALUES
+('ANT', 'Anthropology'), ('BCM', 'Biochemistry'),
+('CSC', 'Computer Science'), ('MAT', 'Mathematics');
+
+##################################################
+
+CREATE TABLE course
+    (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        department_code CHAR(3) NOT NULL,
+        course_code INT NOT NULL,
+        course_name VARCHAR(50) NOT NULL,
+        FOREIGN KEY(department_code) REFERENCES department(department_code) ON DELETE CASCADE
+        # PRIMARY KEY(department_code, course_code)
+    );
+
+INSERT INTO course(department_code, course_code, course_name)
+VALUES
+('ANT', 104, 'Anthropological Inquiries'), 
+('ANT', 280, 'Theories of Culture'), 
+('ANT', 291, 'Methods of Empirical Investigation'), 
+('ANT', 225, 'Human Variation'), 
+('BCM', 262, 'Intro to biochemistry'), 
+('CSC', 151, 'Intro to computer science'), 
+('CSC', 207, 'OOP-Design'), 
+('CSC', 211, 'Computer Architecture'), 
+('CSC', 213, 'Operating System'), 
+('CSC', 324, 'Software Engineering'),
+('CSC', 341, 'Automata'), 
+('MAT', 133, 'Calculus II'), 
+('MAT', 215, 'Linear Algebra');
+
+##################################################
+    
+CREATE TABLE department_goals
+	(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        dept_code CHAR(3) NOT NULL,
+        department_goal_number INT NOT NULL,
+		abstract VARCHAR(100) NOT NULL,
+		details VARCHAR(255) NOT NULL,
+        FOREIGN KEY(dept_code) REFERENCES department(department_code) ON DELETE CASCADE
+	);
+
+INSERT INTO department_goals(dept_code, department_goal_number, abstract, details)
+VALUES
+('ANT', 1, 'first ANT department goal', 'some details about the first ANT department goal'),
+('ANT', 2, 'second ANT department goal', 'some details about the second ANT department goal'),
+('ANT', 3, 'third ANT department goal', 'some details about the third ANT department goal'),
+
+('BCM', 1, 'first BCM department goal', 'some details about the first BCM department goal'),
+('BCM', 2, 'second BCM department goal', 'some details about the second BCM department goal'),
+
+('CSC', 1, 'first CSC department goal', 'some details about the first CSC department goal'),
+('CSC', 2, 'second CSC department goal', 'some details about the second CSC department goal'),
+('CSC', 3, 'third CSC department goal', 'some details about the third CSC department goal'),
+('CSC', 4, 'fourth CSC department goal', 'some details about the fourth CSC department goal'),
+
+('MAT', 1, 'first MAT department goal', 'some details about the first MAT department goal'),
+('MAT', 2, 'second MAT department goal', 'some details about the second MAT department goal'),
+('MAT', 3, 'third MAT department goal', 'some details about the third MAT department goal');
+
+##################################################
+
+CREATE TABLE institutional_goals_satisfied_per_department_goal
+    (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        department_goal_id INT NOT NULL,
+        institution_goal_id INT NOT NULL,
+        FOREIGN KEY(department_goal_id) REFERENCES department_goals(id) ON DELETE CASCADE,
+        FOREIGN KEY(institution_goal_id) REFERENCES institution_goals(id) ON DELETE CASCADE
+        # PRIMARY KEY(dept_code, department_goals, institution_goals)
+    );   
+
+INSERT INTO institutional_goals_satisfied_per_department_goal(department_goal_id, institution_goal_id)
+VALUES
+(1, 1), (1, 2), (1, 4), (2, 1), (3, 1), (3, 2), (1, 2), (1, 3), (1, 4), (2, 1), (1, 1), (2, 2), (3, 3), 
+(3, 4), (4, 1), (4, 3), (1, 1), (2, 1), (3, 1), (4, 1);   
+
+##################################################
+
+CREATE TABLE course_goals
+	(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        course_id INT NOT NULL,
+        course_goal_number INT NOT NULL,        
+		abstract VARCHAR(50) NOT NULL,
+		details VARCHAR(255) NOT NULL,
+        FOREIGN KEY(course_id) REFERENCES course(id) ON DELETE CASCADE
+        #PRIMARY KEY(dept_code, course_code, course_goal_number)
+	);
+INSERT INTO course_goals(course_id, course_goal_number, abstract, details)
+VALUES
+(1, 1, 'first ANT-104 course goal', 'some details about the first ANT-104 course goal'),
+(1, 2, 'second ANT-104 course goal', 'some details about the second ANT-104 course goal'),
+(1, 3, 'third ANT-104 course goal', 'some details about the third ANT-104 course goal'),
+
+(5, 1, 'first BCM-262 course goal', 'some details about the first BCM-262 course goal'),
+(5, 2, 'second BCM-262 course goal', 'some details about the second BCM-262 course goal'),
+
+(6, 1, 'first CSC-151 course goal', 'some details about the first CSC-151 course goal'),
+(6, 2, 'second CSC-151 course goal', 'some details about the second CSC-151 course goal'),
+(7, 1, 'first CSC-207 course goal', 'some details about the first CSC-151 course goal'),
+(8, 1, 'first CSC-211 course goal', 'some details about the first CSC-151 course goal'),
+(9, 1, 'first CSC-213 course goal', 'some details about the first CSC-151 course goal'),
+(10, 1, 'first CSC-324 course goal', 'some details about the first CSC-151 course goal'),
+
+(12, 1, 'first MAT-133 goal', 'some details about the first MAT-133 goal'),
+(12, 2, 'second MAT-133 goal', 'some details about the second MAT-133 goal'),
+(12, 3, 'third MAT-133 goal', 'some details about the third MAT-133 goal');
+
+##################################################
+
+CREATE TABLE departmental_goals_satisfied_per_course_goal
+    (        
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        course_goal_id INT NOT NULL,
+        department_goal_id INT NOT NULL,
+        FOREIGN KEY(course_goal_id) REFERENCES course_goals(id) ON DELETE CASCADE,
+        FOREIGN KEY(department_goal_id) REFERENCES department_goals(id) ON DELETE CASCADE
+    );
+	
+INSERT INTO departmental_goals_satisfied_per_course_goal(course_goal_id, department_goal_id)
+VALUES
+(1, 1), (1, 2), (1, 3), (2, 1), (2, 3), (2, 4), (3, 1), (3, 4), (4, 4), (4, 5), (5, 4), (6, 8),
+(6, 9), (7, 6), (7, 9);
+
+##################################################
+
+SELECT * FROM institution_goals;
+SELECT * FROM department;
+SELECT * FROM department_goals;
+SELECT * FROM institutional_goals_satisfied_per_department_goal;
+SELECT * FROM course;
+SELECT * FROM course_goals;
+SELECT * FROM departmental_goals_satisfied_per_course_goal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
